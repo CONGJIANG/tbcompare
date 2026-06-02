@@ -1,0 +1,40 @@
+url: https://CONGJIANG.github.io/tbcompare/
+
+template:
+  bootstrap: 5
+  bootswatch: flatly
+  bslib:
+    primary: "#1F4E79"
+    border-radius: 0.4rem
+    btn-border-radius: 0.3rem
+
+home:
+  title: tbcompare
+  description: Cross-Trial Causal Comparison and Evidence Synthesis for Multi-Arm Randomized Trials with Heterogeneous Comparators
+
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+    right: [github]
+
+reference:
+- title: Data generation
+  contents:
+  - simulate_tb_data
+  - get_tb_dgp_parameters
+  - dgp_tb_trial_data
+
+- title: Main interface
+  contents:
+  - tb_compare
+
+- title: Estimators
+  contents:
+  - estimate_ipw_unified
+  - gcomp_cross
+  - eif_direct_est
+  - eif_theta_est
+  - eif_indirect_est
+  - tmle_direct
+  - tmle_theta
+  - tmle_indirect

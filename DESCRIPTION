@@ -9,5 +9,10 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 8.0.0
 Suggests: 
+    knitr,
+    rmarkdown,
+    sl3,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+URL: https://congjiang.github.io/tbcompare/
+VignetteBuilder: knitr

@@ -1,6 +1,5 @@
-.Rproj.user
+*.html
+*.R
 
 /.quarto/
 **/*.quarto_ipynb
-docs
-inst/doc

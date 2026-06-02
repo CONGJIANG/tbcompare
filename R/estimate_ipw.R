@@ -2,6 +2,33 @@
 # ============================================================
 # 1. IPW unified estimator
 # ============================================================
+#' Unified IPW estimators for cross-trial comparisons
+#'
+#' Computes inverse probability weighted estimators for four cross-trial
+#' comparison strategies:
+#'
+#' * Traditional indirect comparison
+#' * Observational comparison
+#' * Direct pooled IPD comparison
+#' * Indirect decomposition comparison
+#'
+#' @param dataset A data frame containing the pooled trial data.
+#' @param a_val Treatment label for regimen A.
+#' @param b_val Treatment label for regimen B.
+#' @param c1_val Standard-of-care comparator in trial 1.
+#' @param c2_val Standard-of-care comparator in trial 2.
+#' @param clamp Bounds used to truncate estimated probabilities.
+#' @param compute_boot Logical; whether bootstrap inference should be computed.
+#' @param B Number of bootstrap replicates.
+#'
+#' @return A list containing estimates, standard errors,
+#' confidence intervals, and influence-function quantities for all
+#' implemented comparison strategies.
+#'
+#' @seealso [tb_compare()]
+#'
+#' @export
+
 estimate_ipw_unified <- function(dataset,
                                  a_val = "a",
                                  b_val = "b",

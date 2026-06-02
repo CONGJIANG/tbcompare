@@ -7,7 +7,7 @@ test_that("one-step tte runs", {
 
   fit <- tb_compare(
     data = dat,
-    approach = "tte",
+    approach = "observational",
     estimator = "onestep",
     nuisance_type = "simple"
   )

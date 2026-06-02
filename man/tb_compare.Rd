@@ -6,33 +6,29 @@
 \usage{
 tb_compare(
   data,
-  approach = c("traditional", "tte", "direct", "indirect"),
+  approach = c("traditional", "observational", "direct", "indirect"),
   estimator = c("ipw", "gcomp", "onestep", "tmle"),
   nboot = 100,
   nuisance_type = c("simple", "flexible")
 )
 }
 \arguments{
-\item{data}{Data frame.}
+\item{data}{A data frame containing the trial indicator, treatment, outcome,
+and baseline covariates.}
 
-\item{approach}{One of
-"traditional",
-"observational",
-"direct",
-"indirect".}
+\item{approach}{Identification strategy. One of "traditional",
+"observational", "direct", or "indirect".}
 
-\item{estimator}{One of
-"ipw",
-"gcomp",
-"onestep",
-"tmle".}
+\item{estimator}{Estimation method. One of "ipw", "gcomp", "onestep",
+or "tmle".}
 
 \item{nboot}{Number of bootstrap samples for bootstrap-based estimators.}
 
-\item{nuisance_type}{Nuisance estimation type. Currently mainly used for EIF/TMLE; one of "simple" or "flexible".}
+\item{nuisance_type}{Nuisance estimation type. Currently mainly used for
+one-step/EIF and TMLE estimators; one of "simple" or "flexible".}
 }
 \value{
-A tbcompare object.
+A \code{tbcompare} object.
 }
 \description{
 Main interface for TB comparison estimators

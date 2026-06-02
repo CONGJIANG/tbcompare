@@ -104,6 +104,25 @@ gcomp_trial <- function(data,
   )
 }
 
+#' Cross-trial g-computation prediction helper
+#'
+#' Fits an outcome regression model within one trial and predicts the
+#' counterfactual mean outcomes under two treatment values in the other trial.
+#'
+#' This is an internal helper used by the g-computation estimators.
+#'
+#' @param data A pooled trial data frame.
+#' @param s_val Trial indicator value used to fit the outcome model.
+#' @param treat_active Treatment label for the active regimen.
+#' @param treat_control Treatment label for the comparator regimen.
+#' @param covars Character vector of covariate names included in the outcome model.
+#' @param outcome Name of the binary outcome variable.
+#' @param quiet Logical; if `FALSE`, prints the fitted outcome model coefficients.
+#'
+#' @return A list with predicted mean outcomes under the active and comparator
+#' treatment values in the opposite trial population.
+#'
+#' @export
 gcomp_cross <- function(data,
                         s_val,
                         treat_active,

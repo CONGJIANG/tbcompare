@@ -331,8 +331,8 @@ eif_trial_onestep <- function(data,
                               nuisance_type = c("simple", "flexible")) {
   nuisance_type <- match.arg(nuisance_type)
 
-  dat_s1 <- subset(data, s == 1)
-  dat_s2 <- subset(data, s == 2)
+  dat_s1 <- data[data$s == 1, , drop = FALSE]
+  dat_s2 <- data[data$s == 2, , drop = FALSE]
 
   if (nrow(dat_s1) == 0) stop("No data for trial s = 1")
   if (nrow(dat_s2) == 0) stop("No data for trial s = 2")
@@ -528,7 +528,63 @@ eif_trial_onestep <- function(data,
   )
 }
 
-
+#' EIF-based direct estimator
+#'
+#' Estimates the direct cross-trial contrast using an efficient influence
+#' function (EIF)-based estimator. The estimator combines outcome regressions,
+#' within-trial treatment mechanisms, and the trial membership mechanism.
+#'
+#' @param dataset A data frame containing the outcome, treatment, trial indicator,
+#'   and baseline covariates. Must include variables `y`, `treatment`, `s`,
+#'   `L1`, and `L2`.
+#' @param a_val Character value indicating the active treatment in trial 1.
+#'   Default is `"a"`.
+#' @param b_val Character value indicating the active treatment in trial 2.
+#'   Default is `"b"`.
+#' @param clamp Numeric vector of length 2 giving the lower and upper bounds
+#'   used to truncate estimated probabilities. Default is `c(1e-6, 1 - 1e-6)`.
+#' @param nuisance_type Character string specifying the nuisance estimation
+#'   strategy. Options are `"simple"` and `"flexible"`.
+#'
+#' @return A list with the following components:
+#' \describe{
+#'   \item{eif}{The estimated EIF contribution for each observation.}
+#'   \item{estimate}{The point estimate of the direct contrast.}
+#'   \item{se_if}{Influence-function-based standard error.}
+#'   \item{CI_if}{Wald-type 95\% confidence interval.}
+#'   \item{components}{A data frame containing the four EIF components.}
+#'   \item{nuisance_type}{The nuisance estimation strategy used.}
+#' }
+#'
+#' @details
+#' This function estimates the direct cross-trial contrast comparing treatment
+#' `a_val` in trial 1 with treatment `b_val` in trial 2. It fits the following
+#' nuisance functions:
+#' \itemize{
+#'   \item treatment mechanism in trial 1,
+#'   \item treatment mechanism in trial 2,
+#'   \item outcome regression in trial 1,
+#'   \item outcome regression in trial 2,
+#'   \item trial membership mechanism.
+#' }
+#'
+#' The standard error is computed as the empirical standard deviation of the
+#' estimated EIF divided by the square root of the sample size.
+#'
+#' @examples
+#' \dontrun{
+#' fit <- eif_direct_est(
+#'   dataset = dat,
+#'   a_val = "a",
+#'   b_val = "b",
+#'   nuisance_type = "simple"
+#' )
+#'
+#' fit$estimate
+#' fit$CI_if
+#' }
+#'
+#' @export
 eif_direct_est <- function(dataset,
                            a_val = "a",
                            b_val = "b",
@@ -648,6 +704,66 @@ eif_direct_est <- function(dataset,
   )
 }
 
+#' EIF-based estimator of the indirect pathway contrast (\eqn{\theta})
+#'
+#' Estimates the intermediate contrast
+#' \deqn{
+#' \theta =
+#' \{E[Y^a - Y^{c_1}]\}_{S=1 \rightarrow 2}
+#' -
+#' \{E[Y^b - Y^{c_2}]\}_{S=2 \rightarrow 1},
+#' }
+#' using an efficient influence function (EIF)-based estimator.
+#'
+#' The estimator combines:
+#' \itemize{
+#'   \item treatment propensity models within each trial,
+#'   \item outcome regression models within each trial,
+#'   \item a trial membership model \eqn{P(S=1\mid L)}.
+#' }
+#'
+#' @param dataset A data frame containing the observed data. Must include
+#'   variables `y`, `treatment`, `s`, `L1`, and `L2`.
+#' @param a Character value identifying the active treatment in trial 1.
+#' @param c1 Character value identifying the standard-of-care treatment
+#'   in trial 1.
+#' @param b Character value identifying the active treatment in trial 2.
+#' @param c2 Character value identifying the standard-of-care treatment
+#'   in trial 2.
+#' @param clamp Numeric vector of length two specifying lower and upper
+#'   truncation bounds for estimated probabilities.
+#' @param nuisance_type Character string indicating nuisance estimation
+#'   strategy. Must be one of `"simple"` or `"flexible"`.
+#'
+#' @return A list containing:
+#' \describe{
+#'   \item{theta}{Estimated value of \eqn{\theta}.}
+#'   \item{eif}{Estimated efficient influence function values.}
+#'   \item{se}{Influence-function-based standard error.}
+#'   \item{nuisance_type}{Nuisance estimation strategy used.}
+#' }
+#'
+#' @details
+#' Outcome regressions are fit separately within each trial and evaluated
+#' under each treatment level of interest. Treatment propensity models are
+#' estimated separately within each trial, while the trial membership model
+#' is estimated using the pooled data.
+#'
+#' Standard errors are computed from the empirical variance of the estimated
+#' EIF divided by the sample size.
+#'
+#' @examples
+#' \dontrun{
+#' fit <- eif_theta_est(
+#'   dataset = dat,
+#'   nuisance_type = "simple"
+#' )
+#'
+#' fit$theta
+#' fit$se
+#' }
+#'
+#' @export
 eif_theta_est <- function(dataset,
                           a = "a",
                           c1 = "sc1",
@@ -809,6 +925,71 @@ eif_theta_est <- function(dataset,
 }
 
 
+#' EIF-based estimator of the indirect effect
+#'
+#' Estimates the indirect effect by combining the EIF-based estimator of
+#' the pathway-specific contrast \eqn{\theta} with the EIF-based estimator
+#' of the direct contrast \eqn{\phi}.
+#'
+#' Specifically,
+#' \deqn{
+#' \psi_{\mathrm{indirect}}
+#' =
+#' \theta + \phi.
+#' }
+#'
+#' @param dataset A data frame containing the observed data. Must include
+#'   variables `y`, `treatment`, `s`, `L1`, and `L2`.
+#' @param a Character value identifying the active treatment in trial 1.
+#' @param b Character value identifying the active treatment in trial 2.
+#' @param c1 Character value identifying the standard-of-care treatment
+#'   in trial 1.
+#' @param c2 Character value identifying the standard-of-care treatment
+#'   in trial 2.
+#' @param clamp Numeric vector of length two specifying lower and upper
+#'   truncation bounds for estimated probabilities.
+#' @param nuisance_type Character string indicating nuisance estimation
+#'   strategy. Must be one of `"simple"` or `"flexible"`.
+#'
+#' @return A list containing:
+#' \describe{
+#'   \item{indirect}{Estimated indirect effect.}
+#'   \item{se_if}{Influence-function-based standard error.}
+#'   \item{CI_if}{Wald-type 95\% confidence interval.}
+#'   \item{eif}{Estimated efficient influence function values.}
+#'   \item{theta}{Estimated pathway-specific component \eqn{\theta}.}
+#'   \item{phi}{Estimated direct-effect component \eqn{\phi}.}
+#'   \item{nuisance_type}{Nuisance estimation strategy used.}
+#' }
+#'
+#' @details
+#' The indirect effect is estimated as the sum of:
+#' \itemize{
+#'   \item the EIF-based estimator of \eqn{\theta}, obtained from
+#'         [eif_theta_est()], and
+#'   \item the EIF-based estimator of the direct contrast \eqn{\phi},
+#'         obtained from [eif_direct_est()].
+#' }
+#'
+#' The efficient influence function for the indirect effect is constructed
+#' as the sum of the estimated influence functions for \eqn{\theta} and
+#' \eqn{\phi}. Standard errors and confidence intervals are then obtained
+#' using the empirical variance of this combined EIF.
+#'
+#' @examples
+#' \dontrun{
+#' fit <- eif_indirect_est(
+#'   dataset = dat,
+#'   nuisance_type = "flexible"
+#' )
+#'
+#' fit$indirect
+#' fit$CI_if
+#' }
+#'
+#' @seealso [eif_theta_est()], [eif_direct_est()]
+#'
+#' @export
 eif_indirect_est <- function(dataset,
                              a = "a",
                              b = "b",
