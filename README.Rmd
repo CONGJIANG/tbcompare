@@ -1,3 +1,7 @@
+---
+output: github_document
+---
+
 # tbcompare
 
 > Cross-Trial Causal Comparison for Multi-Arm Randomized Trials with Heterogeneous Comparators
