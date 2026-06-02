@@ -43,7 +43,7 @@ jobs:
 
       - name: Install GitHub dependencies
         run: |
-          remotes::install_github("tlverse/sl3")
+          remotes::install_github("tlverse/sl3", build = FALSE, upgrade = "never")
         shell: Rscript {0}
 
       - name: Install package dependencies
