@@ -21,10 +21,11 @@ tb_compare <- function(
   approach = c("traditional", "tte", "direct", "indirect"),
   estimator = c("ipw", "gcomp", "onestep", "tmle"),
   nboot = 100,
-  nuisance_type = "simple"
+  nuisance_type = c("simple", "flexible")
 ) {
   approach <- match.arg(approach)
   estimator <- match.arg(estimator)
+  nuisance_type <- match.arg(nuisance_type)
 
   if (estimator == "ipw") {
     res <- estimate_ipw_unified(data)
@@ -121,5 +122,154 @@ tb_compare <- function(
     class = "tbcompare"
   ))
 }
-  stop("Only estimator = 'ipw' is currently implemented.")
+  if (estimator == "onestep") {
+
+  if (approach == "tte") {
+
+    dat_ab <- data[data$treatment %in% c("a", "b"), , drop = FALSE]
+    dat_ab$s <- 3
+    dat_ab$treatment <- as.numeric(as.character(dat_ab$treatment) == "a")
+
+    nuis <- estimate_nuisances(
+      data = dat_ab,
+      outcome = "y",
+      treat = "treatment",
+      covars = c("L1", "L2"),
+      nuisance_type = nuisance_type
+    )
+
+    res <- one_step_ATE(
+      data = dat_ab,
+      nuisances = nuis,
+      outcome = "y",
+      treat = "treatment",
+      covars = c("L1", "L2"),
+      nuisance_type = nuisance_type
+    )
+
+    return(structure(
+      list(
+        estimate = as.numeric(res$psi),
+        se = as.numeric(res$se),
+        ci = as.numeric(c(res$ci_lower, res$ci_upper)),
+        approach = approach,
+        estimator = estimator,
+        nuisance_type = nuisance_type,
+        n = nrow(dat_ab),
+        raw = res
+      ),
+      class = "tbcompare"
+    ))
+  }
+
+  if (approach == "traditional") {
+
+  res <- eif_trial_onestep(
+    data = data,
+    outcome = "y",
+    treat = "treatment",
+    covars = c("L1", "L2", "country"),
+    treat_s1_active = "a",
+    treat_s1_control = "sc1",
+    treat_s2_active = "b",
+    treat_s2_control = "sc2",
+    nuisance_type = nuisance_type
+  )
+
+  return(structure(
+    list(
+      estimate = as.numeric(res$ate_diff),
+      se = as.numeric(res$se_diff),
+      ci = as.numeric(c(res$ci_lower, res$ci_upper)),
+      approach = approach,
+      estimator = estimator,
+      nuisance_type = nuisance_type,
+      n = nrow(data),
+      raw = res
+    ),
+    class = "tbcompare"
+  ))
+}
+    if (approach == "direct") {
+
+  res <- eif_direct_est(
+    dataset = data,
+    a_val = "a",
+    b_val = "b",
+    nuisance_type = nuisance_type
+  )
+
+  return(structure(
+    list(
+      estimate = as.numeric(res$estimate),
+      se = as.numeric(res$se_if),
+      ci = as.numeric(res$CI_if),
+      approach = approach,
+      estimator = estimator,
+      nuisance_type = nuisance_type,
+      n = nrow(data),
+      raw = res
+    ),
+    class = "tbcompare"
+  ))
+}
+   if (approach == "indirect") {
+
+  res <- eif_indirect_est(
+    dataset = data,
+    a = "a",
+    b = "b",
+    c1 = "sc1",
+    c2 = "sc2",
+    nuisance_type = nuisance_type
+  )
+
+  return(structure(
+    list(
+      estimate = as.numeric(res$indirect),
+      se = as.numeric(res$se_if),
+      ci = as.numeric(res$CI_if),
+      approach = approach,
+      estimator = estimator,
+      nuisance_type = nuisance_type,
+      n = nrow(data),
+      raw = res
+    ),
+    class = "tbcompare"
+  ))
+} 
+  stop("For now, estimator = 'onestep' supports approach = 'tte', 'traditional', 'direct', or 'indirect'.")
+  }
+  
+  if (estimator == "tmle") {
+
+  if (approach == "tte") {
+
+    res <- tmle_tte(
+      data = data,
+      nuisance_type = nuisance_type,
+      a_val = "a",
+      b_val = "b",
+      covars = c("L1", "L2", "country"),
+      outcome = "y"
+    )
+
+    return(structure(
+      list(
+        estimate = as.numeric(res$estimate),
+        se = as.numeric(res$se),
+        ci = as.numeric(res$CI),
+        approach = approach,
+        estimator = estimator,
+        nuisance_type = nuisance_type,
+        n = nrow(data),
+        raw = res
+      ),
+      class = "tbcompare"
+    ))
+  }
+
+  stop("For now, estimator = 'tmle' only supports approach = 'tte'.")
+}
+  stop("Estimator not yet implemented.")
 }

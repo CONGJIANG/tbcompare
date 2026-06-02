@@ -9,7 +9,7 @@ tb_compare(
   approach = c("traditional", "tte", "direct", "indirect"),
   estimator = c("ipw", "gcomp", "onestep", "tmle"),
   nboot = 100,
-  nuisance_type = "simple"
+  nuisance_type = c("simple", "flexible")
 )
 }
 \arguments{
