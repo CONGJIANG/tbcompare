@@ -1,0 +1,231 @@
+# tbcompare
+
+> Cross-Trial Causal Comparison for Multi-Arm Randomized Trials with
+> Heterogeneous Comparators
+
+`tbcompare` is an R package for causal inference and evidence synthesis
+across randomized clinical trials that do not share a common active
+comparator.
+
+The package was developed to support comparative effectiveness analyses
+of multidrug-resistant tuberculosis (MDR/RR-TB) treatment regimens using
+individual participant data (IPD) from the **endTB** and
+**TB-PRACTECAL** trials, but the methodology is broadly applicable to
+cross-trial comparisons in medicine, public health, and comparative
+effectiveness research.
+
+------------------------------------------------------------------------
+
+## Motivation
+
+Many important clinical questions cannot be answered by a single
+randomized controlled trial.
+
+In MDR/RR-TB, recent phase III trials demonstrated the effectiveness of
+several novel all-oral regimens. However, the most clinically relevant
+comparison—the effectiveness of the 6-month BPaLM regimen versus 9-month
+all-oral regimens—has never been directly randomized.
+
+Traditional indirect comparisons, network meta-analysis, and IPD
+meta-analysis typically rely on common comparators or strong homogeneity
+assumptions. These assumptions are often violated when:
+
+- trials evaluate different treatment sets,
+- standards of care vary across countries or time,
+- patient populations differ across studies, and
+- treatment effects may not transport across trial populations.
+
+`tbcompare` provides a causal inference framework for these settings.
+
+------------------------------------------------------------------------
+
+## Methodological Framework
+
+The package implements four complementary identification strategies:
+
+| Approach | Description |
+|----|----|
+| **Traditional** | Contrast-of-contrasts using trial-specific treatment effects |
+| **Observational** | Restrict analysis to observed treatment arms and emulate a common target trial |
+| **Direct Pooling** | Directly identify the cross-trial treatment contrast using pooled IPD |
+| **Indirect Decomposition** | Reconstruct treatment comparisons through heterogeneous standards of care |
+
+These approaches correspond to different causal assumptions and
+transportability conditions.
+
+------------------------------------------------------------------------
+
+## Estimators
+
+For each identification strategy, `tbcompare` supports:
+
+### Inverse Probability Weighting (IPW)
+
+- Horvitz–Thompson style estimators
+- Trial participation weighting
+- Treatment assignment weighting
+
+### G-Computation
+
+- Outcome regression estimators
+- Bootstrap inference
+
+### One-Step / EIF Estimation
+
+- Efficient influence function (EIF)-based estimators
+- Doubly robust estimation
+- Asymptotically efficient under correct nuisance estimation
+
+### Targeted Minimum Loss-Based Estimation (TMLE)
+
+- Doubly robust
+- Locally efficient
+- Compatible with machine learning nuisance estimation
+
+------------------------------------------------------------------------
+
+## Flexible Nuisance Estimation
+
+`tbcompare` supports two nuisance estimation modes:
+
+### Simple
+
+Parametric generalized linear models (GLMs)
+
+``` r
+
+nuisance_type = "simple"
+```
+
+### Flexible
+
+Data-adaptive machine learning using Super Learner (`sl3`)
+
+``` r
+
+nuisance_type = "flexible"
+```
+
+Potential learners include:
+
+- Generalized linear models
+- Regularized regression
+- Random forests
+- Ensemble learning methods
+
+------------------------------------------------------------------------
+
+## Installation
+
+``` r
+
+# development version
+remotes::install_github("CONGJIANG/tbcompare")
+```
+
+------------------------------------------------------------------------
+
+## Example
+
+``` r
+
+library(tbcompare)
+
+dat <- simulate_tb_data(
+  n = 1000,
+  dgp_choice = "delta1",
+  seed = 1
+)
+
+fit <- tb_compare(
+  data = dat,
+  approach = "direct",
+  estimator = "tmle",
+  nuisance_type = "simple"
+)
+
+fit
+summary(fit)
+```
+
+Output:
+
+``` text
+Estimator: TMLE
+Approach : Direct
+
+Estimate : 0.053
+SE       : 0.028
+
+95% CI:
+(-0.002, 0.108)
+```
+
+------------------------------------------------------------------------
+
+## Supported Approaches
+
+``` r
+
+approach =
+  "traditional"
+  "observational"
+  "direct"
+  "indirect"
+```
+
+## Supported Estimators
+
+``` r
+
+estimator =
+  "ipw"
+  "gcomp"
+  "onestep"
+  "tmle"
+```
+
+------------------------------------------------------------------------
+
+## Simulation Framework
+
+The package includes data-generating mechanisms motivated by MDR/RR-TB
+trials.
+
+``` r
+
+dat <- simulate_tb_data(
+  n = 2000,
+  dgp_choice = "delta2"
+)
+```
+
+Available scenarios include:
+
+- Homogeneous treatment effects
+- Violations of transportability
+- Heterogeneous standards of care
+- Nonlinear outcome models
+- Treatment effect modification
+
+------------------------------------------------------------------------
+
+## Scientific Background
+
+The methodology implemented in `tbcompare` is motivated by cross-trial
+causal comparisons between the endTB and TB-PRACTECAL randomized trials
+among people living with HIV (PLHIV). The package formalizes this
+problem as one of causal transportability and data fusion under
+heterogeneous comparators and develops semiparametric efficient
+estimators for the resulting causal estimands.
+
+------------------------------------------------------------------------
+
+## Citation
+
+If you use `tbcompare` in research, please cite the accompanying
+methodological manuscript:
+
+> Jiang C, et al. *Cross-Trial Causal Comparison Under Heterogeneous
+> Comparators: Semiparametric Methods for MDR/RR-TB Treatment
+> Evaluation*.
