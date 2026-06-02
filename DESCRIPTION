@@ -1,23 +1,42 @@
 Package: tbcompare
-Title: What the Package Does (One Line, Title Case)
+Title: Cross-Trial Comparison Estimators
 Version: 0.0.0.9000
-Authors@R: 
-    person("Cong", "Jiang", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R:
+    person(
+      "Cong", "Jiang",
+      email = "xxx@gmail.com",
+      role = c("aut", "cre")
+    )
+Description: Methods for cross-trial comparison using IPW,
+    g-computation, EIF-based one-step estimation, and TMLE.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 8.0.0
+RoxygenNote: 7.3.2
+
 Imports:
+    data.table,
+    dplyr,
+    Matrix,
+    methods,
     stats,
-    utils,
-    sl3
-Suggests: 
+    SuperLearner,
+    sl3,
+    tmle3,
+    tmle3mopttx,
+    utils
+
+Suggests:
     knitr,
+    pkgdown,
     rmarkdown,
     testthat (>= 3.0.0)
+
 Remotes:
-    tlverse/sl3
+    tlverse/sl3,
+    tlverse/tmle3,
+    tlverse/tmle3mopttx
+
 Config/testthat/edition: 3
 URL: https://congjiang.github.io/tbcompare/
 VignetteBuilder: knitr
