@@ -1,8 +1,8 @@
 #' @export
-print.tbcompare <- function(x, ...) {
+print.xtrial <- function(x, ...) {
 
   cat("\n")
-  cat("tbcompare object\n\n")
+  cat("xtrial object\n\n")
 
   cat("Estimator:",
       toupper(x$estimator),
@@ -41,7 +41,7 @@ print.tbcompare <- function(x, ...) {
 
 
 #' @export
-summary.tbcompare <- function(object, ...) {
+summary.xtrial <- function(object, ...) {
 
   out <- data.frame(
     estimator = object$estimator,

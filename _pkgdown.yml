@@ -20,13 +20,13 @@ navbar:
 reference:
 - title: Data generation
   contents:
-  - simulate_tb_data
-  - get_tb_dgp_parameters
-  - dgp_tb_trial_data
+  - simulate_xtrial_data
+  - get_xtrial_dgp_parameters
+  - dgp_xtrial_data
 
 - title: Main interface
   contents:
-  - tb_compare
+  - xtrial
 
 - title: Estimators
   contents:

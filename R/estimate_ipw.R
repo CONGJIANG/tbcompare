@@ -25,7 +25,7 @@
 #' confidence intervals, and influence-function quantities for all
 #' implemented comparison strategies.
 #'
-#' @seealso [tb_compare()]
+#' @seealso [xtrial()]
 #'
 #' @export
 
