@@ -1,4 +1,4 @@
-url: https://CONGJIANG.github.io/tbcompare/
+url: https://CONGJIANG.github.io/xtrial/
 
 template:
   bootstrap: 5
@@ -9,7 +9,7 @@ template:
     btn-border-radius: 0.3rem
 
 home:
-  title: tbcompare
+  title: xtrial
   description: Cross-Trial Causal Comparison and Evidence Synthesis for Multi-Arm Randomized Trials with Heterogeneous Comparators
 
 navbar:

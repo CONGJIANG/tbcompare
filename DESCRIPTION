@@ -1,5 +1,5 @@
-Package: tbcompare
-Title: Cross-Trial Comparison Estimators
+Package: xtrial
+Title: Cross-Trial Causal Comparison Estimators
 Version: 0.0.0.9000
 Authors@R:
     person(
@@ -38,5 +38,5 @@ Remotes:
     tlverse/tmle3mopttx
 
 Config/testthat/edition: 3
-URL: https://congjiang.github.io/tbcompare/
+URL: https://congjiang.github.io/xtrial/
 VignetteBuilder: knitr
