@@ -1,4 +1,4 @@
 # License
 
     YEAR: 2026
-    COPYRIGHT HOLDER: tbcompare authors
+    COPYRIGHT HOLDER: xtrial authors

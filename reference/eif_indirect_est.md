@@ -73,15 +73,15 @@ the direct contrast \\\phi\\. Specifically, \$\$
 estimated as the sum of:
 
 - the EIF-based estimator of \\\theta\\, obtained from
-  [`eif_theta_est()`](https://CONGJIANG.github.io/tbcompare/reference/eif_theta_est.md),
+  [`eif_theta_est()`](https://CONGJIANG.github.io/xtrial/reference/eif_theta_est.md),
   and
 
 - the EIF-based estimator of the direct contrast \\\phi\\, obtained from
-  [`eif_direct_est()`](https://CONGJIANG.github.io/tbcompare/reference/eif_direct_est.md).
+  [`eif_direct_est()`](https://CONGJIANG.github.io/xtrial/reference/eif_direct_est.md).
 
 The efficient influence function for the indirect effect is constructed
 as the sum of the estimated influence functions for \\\theta\\ and
 \\\phi\\. Standard errors and confidence intervals are then obtained
 using the empirical variance of this combined EIF.
-[`eif_theta_est()`](https://CONGJIANG.github.io/tbcompare/reference/eif_theta_est.md),
-[`eif_direct_est()`](https://CONGJIANG.github.io/tbcompare/reference/eif_direct_est.md)
+[`eif_theta_est()`](https://CONGJIANG.github.io/xtrial/reference/eif_theta_est.md),
+[`eif_direct_est()`](https://CONGJIANG.github.io/xtrial/reference/eif_direct_est.md)

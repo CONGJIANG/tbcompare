@@ -86,10 +86,10 @@ Estimates the indirect effect using the decomposition \$\$ \delta =
 \theta + \phi, \$\$where:
 
 - \\\theta\\ is estimated by
-  [`tmle_theta()`](https://CONGJIANG.github.io/tbcompare/reference/tmle_theta.md),
+  [`tmle_theta()`](https://CONGJIANG.github.io/xtrial/reference/tmle_theta.md),
 
 - \\\phi\\ is estimated by
-  [`tmle_direct()`](https://CONGJIANG.github.io/tbcompare/reference/tmle_direct.md)
+  [`tmle_direct()`](https://CONGJIANG.github.io/xtrial/reference/tmle_direct.md)
   evaluated at the two standard-of-care treatments.
 
 The indirect effect estimator is constructed as\$\$ \hat\delta =
@@ -98,5 +98,5 @@ both components are estimated from the same sample, inference is based
 on the combined efficient influence function\$\$ D\_{\delta} =
 D\_{\theta} + D\_{\phi}, \$\$which automatically accounts for the
 covariance between \\\hat\theta\\ and \\\hat\phi\\.
-[`tmle_theta()`](https://CONGJIANG.github.io/tbcompare/reference/tmle_theta.md),
-[`tmle_direct()`](https://CONGJIANG.github.io/tbcompare/reference/tmle_direct.md)
+[`tmle_theta()`](https://CONGJIANG.github.io/xtrial/reference/tmle_theta.md),
+[`tmle_direct()`](https://CONGJIANG.github.io/xtrial/reference/tmle_direct.md)

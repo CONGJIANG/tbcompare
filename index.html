@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>tbcompare • tbcompare</title>
+<title>xtrial • xtrial</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="tbcompare">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="xtrial">
 <meta name="description" content="Cross-Trial Causal Comparison and Evidence Synthesis for Multi-Arm Randomized Trials with Heterogeneous Comparators">
 <meta property="og:description" content="Cross-Trial Causal Comparison and Evidence Synthesis for Multi-Arm Randomized Trials with Heterogeneous Comparators">
 </head>
@@ -20,7 +20,7 @@
 
     <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
 
-    <a class="navbar-brand me-2" href="index.html">tbcompare</a>
+    <a class="navbar-brand me-2" href="index.html">xtrial</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
 
@@ -47,12 +47,12 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="tbcompare">tbcompare<a class="anchor" aria-label="anchor" href="#tbcompare"></a>
+<div class="page-header"><h1 id="xtrial">xtrial<a class="anchor" aria-label="anchor" href="#xtrial"></a>
 </h1></div>
 <blockquote>
 <p>Cross-Trial Causal Comparison for Multi-Arm Randomized Trials with Heterogeneous Comparators</p>
 </blockquote>
-<p><code>tbcompare</code> is an R package for causal inference and evidence synthesis across randomized clinical trials that do not share a common active comparator.</p>
+<p><code>xtrial</code> is an R package for causal inference and evidence synthesis across randomized clinical trials that do not share a common active comparator.</p>
 <p>The package was developed to support comparative effectiveness analyses of multidrug-resistant tuberculosis (MDR/RR-TB) treatment regimens using individual participant data (IPD) from the <strong>endTB</strong> and <strong>TB-PRACTECAL</strong> trials, but the methodology is broadly applicable to cross-trial comparisons in medicine, public health, and comparative effectiveness research.</p>
 <hr>
 <div class="section level2">
@@ -67,7 +67,7 @@
 <li>patient populations differ across studies, and</li>
 <li>treatment effects may not transport across trial populations.</li>
 </ul>
-<p><code>tbcompare</code> provides a causal inference framework for these settings.</p>
+<p><code>xtrial</code> provides a causal inference framework for these settings.</p>
 <hr>
 </div>
 <div class="section level2">
@@ -108,7 +108,7 @@
 <div class="section level2">
 <h2 id="estimators">Estimators<a class="anchor" aria-label="anchor" href="#estimators"></a>
 </h2>
-<p>For each identification strategy, <code>tbcompare</code> supports:</p>
+<p>For each identification strategy, <code>xtrial</code> supports:</p>
 <div class="section level3">
 <h3 id="inverse-probability-weighting-ipw">Inverse Probability Weighting (IPW)<a class="anchor" aria-label="anchor" href="#inverse-probability-weighting-ipw"></a>
 </h3>
@@ -149,7 +149,7 @@
 <div class="section level2">
 <h2 id="flexible-nuisance-estimation">Flexible Nuisance Estimation<a class="anchor" aria-label="anchor" href="#flexible-nuisance-estimation"></a>
 </h2>
-<p><code>tbcompare</code> supports two nuisance estimation modes:</p>
+<p><code>xtrial</code> supports two nuisance estimation modes:</p>
 <div class="section level3">
 <h3 id="simple">Simple<a class="anchor" aria-label="anchor" href="#simple"></a>
 </h3>
@@ -178,19 +178,18 @@
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># development version</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"CONGJIANG/tbcompare"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"CONGJIANG/xtrial"</span><span class="op">)</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://congjiang.github.io/tbcompare/" class="external-link">tbcompare</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://congjiang.github.io/xtrial/" class="external-link">xtrial</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/simulate_tb_data.html">simulate_tb_data</a></span><span class="op">(</span></span>
 <span>  n <span class="op">=</span> <span class="fl">1000</span>,</span>
-<span>  dgp_choice <span class="op">=</span> <span class="st">"delta1"</span>,</span>
-<span>  seed <span class="op">=</span> <span class="fl">1</span></span>
+<span>  dgp_choice <span class="op">=</span> <span class="st">"delta1"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tb_compare.html">tb_compare</a></span><span class="op">(</span></span>
@@ -256,13 +255,13 @@ SE       : 0.028
 <div class="section level2">
 <h2 id="scientific-background">Scientific Background<a class="anchor" aria-label="anchor" href="#scientific-background"></a>
 </h2>
-<p>The methodology implemented in <code>tbcompare</code> is motivated by cross-trial causal comparisons between the endTB and TB-PRACTECAL randomized trials among people living with HIV (PLHIV). The package formalizes this problem as one of causal transportability and data fusion under heterogeneous comparators and develops semiparametric efficient estimators for the resulting causal estimands.</p>
+<p>The methodology implemented in <code>xtrial</code> is motivated by cross-trial causal comparisons between the endTB and TB-PRACTECAL randomized trials among people living with HIV (PLHIV). The package formalizes this problem as one of causal transportability and data fusion under heterogeneous comparators and develops semiparametric efficient estimators for the resulting causal estimands.</p>
 <hr>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
-<p>If you use <code>tbcompare</code> in research, please cite the accompanying methodological manuscript:</p>
+<p>If you use <code>xtrial</code> in research, please cite the accompanying methodological manuscript:</p>
 <blockquote>
 <p>Jiang C, et al. <em>Cross-Trial Causal Comparison Under Heterogeneous Comparators: Semiparametric Methods for MDR/RR-TB Treatment Evaluation</em>.</p>
 </blockquote>
@@ -280,7 +279,7 @@ SE       : 0.028
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html#citation">Citing tbcompare</a></li>
+<li><a href="authors.html#citation">Citing xtrial</a></li>
 </ul>
 </div>
 

@@ -3,4 +3,4 @@
 ### All vignettes
 
 - [Getting
-  Started](https://CONGJIANG.github.io/tbcompare/articles/getting-started.md):
+  Started](https://CONGJIANG.github.io/xtrial/articles/getting-started.md):

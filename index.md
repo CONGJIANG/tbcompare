@@ -1,9 +1,9 @@
-# tbcompare
+# xtrial
 
 > Cross-Trial Causal Comparison for Multi-Arm Randomized Trials with
 > Heterogeneous Comparators
 
-`tbcompare` is an R package for causal inference and evidence synthesis
+`xtrial` is an R package for causal inference and evidence synthesis
 across randomized clinical trials that do not share a common active
 comparator.
 
@@ -35,7 +35,7 @@ assumptions. These assumptions are often violated when:
 - patient populations differ across studies, and
 - treatment effects may not transport across trial populations.
 
-`tbcompare` provides a causal inference framework for these settings.
+`xtrial` provides a causal inference framework for these settings.
 
 ------------------------------------------------------------------------
 
@@ -57,7 +57,7 @@ transportability conditions.
 
 ## Estimators
 
-For each identification strategy, `tbcompare` supports:
+For each identification strategy, `xtrial` supports:
 
 ### Inverse Probability Weighting (IPW)
 
@@ -86,7 +86,7 @@ For each identification strategy, `tbcompare` supports:
 
 ## Flexible Nuisance Estimation
 
-`tbcompare` supports two nuisance estimation modes:
+`xtrial` supports two nuisance estimation modes:
 
 ### Simple
 
@@ -120,7 +120,7 @@ Potential learners include:
 ``` r
 
 # development version
-remotes::install_github("CONGJIANG/tbcompare")
+remotes::install_github("CONGJIANG/xtrial")
 ```
 
 ------------------------------------------------------------------------
@@ -129,12 +129,11 @@ remotes::install_github("CONGJIANG/tbcompare")
 
 ``` r
 
-library(tbcompare)
+library(xtrial)
 
 dat <- simulate_tb_data(
   n = 1000,
-  dgp_choice = "delta1",
-  seed = 1
+  dgp_choice = "delta1"
 )
 
 fit <- tb_compare(
@@ -212,7 +211,7 @@ Available scenarios include:
 
 ## Scientific Background
 
-The methodology implemented in `tbcompare` is motivated by cross-trial
+The methodology implemented in `xtrial` is motivated by cross-trial
 causal comparisons between the endTB and TB-PRACTECAL randomized trials
 among people living with HIV (PLHIV). The package formalizes this
 problem as one of causal transportability and data fusion under
@@ -223,7 +222,7 @@ estimators for the resulting causal estimands.
 
 ## Citation
 
-If you use `tbcompare` in research, please cite the accompanying
+If you use `xtrial` in research, please cite the accompanying
 methodological manuscript:
 
 > Jiang C, et al. *Cross-Trial Causal Comparison Under Heterogeneous

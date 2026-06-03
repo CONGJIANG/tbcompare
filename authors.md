@@ -6,14 +6,13 @@
 
 ## Citation
 
-Jiang C (2026). *tbcompare: What the Package Does (One Line, Title
-Case)*. R package version 0.0.0.9000,
-<https://congjiang.github.io/tbcompare/>.
+Jiang C (2026). *xtrial: Cross-Trial Causal Comparison Estimators*. R
+package version 0.0.0.9000, <https://congjiang.github.io/xtrial/>.
 
     @Manual{,
-      title = {tbcompare: What the Package Does (One Line, Title Case)},
+      title = {xtrial: Cross-Trial Causal Comparison Estimators},
       author = {Cong Jiang},
       year = {2026},
       note = {R package version 0.0.0.9000},
-      url = {https://congjiang.github.io/tbcompare/},
+      url = {https://congjiang.github.io/xtrial/},
     }

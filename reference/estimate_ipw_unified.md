@@ -69,4 +69,4 @@ influence-function quantities for all implemented comparison strategies.
 
 ## See also
 
-[`tb_compare()`](https://CONGJIANG.github.io/tbcompare/reference/tb_compare.md)
+[`xtrial()`](https://CONGJIANG.github.io/xtrial/reference/xtrial.md)
