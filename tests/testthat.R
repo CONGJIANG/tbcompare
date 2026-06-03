@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(tbcompare)
+library(xtrial)
 
-test_check("tbcompare")
+test_check("xtrial")

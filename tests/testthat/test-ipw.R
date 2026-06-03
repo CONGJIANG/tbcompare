@@ -1,9 +1,8 @@
 test_that("IPW direct runs", {
-  dat <- simulate_tb_data(
-    n = 500,
-    seed = 1
+  dat <- simulate_xtrial_data(
+    n = 500
   )
-  fit <- tb_compare(
+  fit <- xtrial(
     dat,
     approach = "direct",
     estimator = "ipw"

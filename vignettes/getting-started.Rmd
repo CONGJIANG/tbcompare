@@ -42,8 +42,7 @@ cross-trial tuberculosis treatment comparisons.
 
 ```{r simulate-data}
 dat <- simulate_tb_data(
-  n = 1000,
-  seed = 1
+  n = 1000
 )
 
 head(dat)
@@ -222,7 +221,7 @@ A typical `{xtrial}` workflow is:
 For example:
 
 ```{r minimal-workflow}
-dat <- simulate_tb_data(n = 1000, seed = 123)
+dat <- simulate_tb_data(n = 1000)
 
 fit <- tb_compare(
   data = dat,

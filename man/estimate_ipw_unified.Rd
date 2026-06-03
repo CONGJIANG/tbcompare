@@ -50,5 +50,5 @@ comparison strategies:
 }
 }
 \seealso{
-\code{\link[=tb_compare]{tb_compare()}}
+\code{\link[=xtrial]{xtrial()}}
 }
