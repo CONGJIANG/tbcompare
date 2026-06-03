@@ -1,5 +1,10 @@
 # xtrial
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/CONGJIANG/xtrial/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/CONGJIANG/xtrial/actions/workflows/R-CMD-check.yaml)
+[![pkgdown](https://github.com/CONGJIANG/xtrial/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/CONGJIANG/xtrial/actions/workflows/pkgdown.yaml)
+<!-- badges: end -->
+
 > Cross-Trial Causal Comparison for Multi-Arm Randomized Trials with Heterogeneous Comparators
 
 `xtrial` is an R package for causal inference and evidence synthesis across randomized clinical trials that do not share a common active comparator.
