@@ -2,7 +2,11 @@
 
 ## Authors
 
-- **Cong Jiang**. Author, maintainer.
+- **[Cong Jiang](https://congjiang.github.io/)**. Author, maintainer.
+  [](https://orcid.org/000-0002-4486-5423)
+
+- **[Nima Hejazi](https://nimahejazi.org/)**. Contributor.
+  [](https://orcid.org/0000-0002-7127-2789)
 
 ## Citation
 

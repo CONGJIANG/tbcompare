@@ -225,6 +225,5 @@ estimators for the resulting causal estimands.
 If you use `xtrial` in research, please cite the accompanying
 methodological manuscript:
 
-> Jiang C, et al. *Cross-Trial Causal Comparison Under Heterogeneous
-> Comparators: Semiparametric Methods for MDR/RR-TB Treatment
-> Evaluation*.
+> Jiang C et al. *Cross-Trial Causal Comparison of Treatment Regimens
+> with Heterogeneous Comparators* .
