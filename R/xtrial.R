@@ -346,6 +346,7 @@ new_xtrial_result <- function(estimate,
 #'
 #' @inheritParams xtrial
 #' @return An `xtrial` object.
+#' @keywords internal
 #' @export
 tb_compare <- function(...) {
   .Deprecated("xtrial")

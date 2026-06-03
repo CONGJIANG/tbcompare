@@ -186,6 +186,7 @@ simulate_xtrial_data <- function(
 #' Backward-compatible alias for get_xtrial_dgp_parameters()
 #'
 #' @inheritParams get_xtrial_dgp_parameters
+#' @keywords internal
 #' @export
 get_tb_dgp_parameters <- function(...) {
   .Deprecated("get_xtrial_dgp_parameters")
@@ -195,6 +196,7 @@ get_tb_dgp_parameters <- function(...) {
 #' Backward-compatible alias for dgp_xtrial_data()
 #'
 #' @inheritParams dgp_xtrial_data
+#' @keywords internal
 #' @export
 dgp_tb_trial_data <- function(...) {
   .Deprecated("dgp_xtrial_data")
@@ -204,6 +206,7 @@ dgp_tb_trial_data <- function(...) {
 #' Backward-compatible alias for simulate_xtrial_data()
 #'
 #' @inheritParams simulate_xtrial_data
+#' @keywords internal
 #' @export
 simulate_tb_data <- function(...) {
   .Deprecated("simulate_xtrial_data")

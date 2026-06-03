@@ -130,8 +130,7 @@ library(xtrial)
 
 dat <- simulate_tb_data(
   n = 1000,
-  dgp_choice = "delta1",
-  seed = 1
+  dgp_choice = "delta1"
 )
 
 fit <- tb_compare(

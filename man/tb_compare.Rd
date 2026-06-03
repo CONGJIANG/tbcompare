@@ -12,3 +12,4 @@ An \code{xtrial} object.
 \description{
 Backward-compatible alias for xtrial()
 }
+\keyword{internal}

@@ -9,3 +9,4 @@ dgp_tb_trial_data(...)
 \description{
 Backward-compatible alias for dgp_xtrial_data()
 }
+\keyword{internal}

@@ -9,3 +9,4 @@ get_tb_dgp_parameters(...)
 \description{
 Backward-compatible alias for get_xtrial_dgp_parameters()
 }
+\keyword{internal}

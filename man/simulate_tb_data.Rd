@@ -12,3 +12,4 @@ simulate_tb_data(...)
 \description{
 Backward-compatible alias for simulate_xtrial_data()
 }
+\keyword{internal}
