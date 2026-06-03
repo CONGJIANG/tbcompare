@@ -159,26 +159,20 @@ dgp_tb_trial_data <- function(
 #' @param n Integer. Sample size.
 #' @param dgp_choice Character. One of \code{"delta0"}, \code{"delta1"},
 #'   \code{"delta2"}, or \code{"delta3"}.
-#' @param seed Optional integer random seed.
 #' @param ... Additional arguments passed to \code{dgp_tb_trial_data()}.
 #'
 #' @return A data frame with simulated TB comparison data.
 #'
 #' @examples
-#' dat <- simulate_tb_data(n = 1000, dgp_choice = "delta1", seed = 1)
+#' dat <- simulate_tb_data(n = 1000, dgp_choice = "delta1")
 #' table(dat$s, dat$treatment)
 #'
 #' @export
 simulate_tb_data <- function(
   n = 1000,
   dgp_choice = "delta1",
-  seed = NULL,
   ...
 ) {
-  if (!is.null(seed)) {
-    set.seed(seed)
-  }
-
   pars <- get_tb_dgp_parameters(dgp_choice = dgp_choice)
 
   dgp_tb_trial_data(
