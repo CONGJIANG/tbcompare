@@ -1,12 +1,13 @@
 Package: xtrial
 Title: Cross-Trial Causal Comparison Estimators
 Version: 0.0.0.9000
-Authors@R:
-    person(
-      "Cong", "Jiang",
-      email = "xxx@gmail.com",
-      role = c("aut", "cre")
-    )
+Authors@R: c(
+    person("Cong", "Jiang", , "cjiang698@gmail.com", role = c("aut", "cre"),
+      comment = c(ORCID = "000-0002-4486-5423")
+    ),
+    person("Nima", "Hejazi", , "", role = c('ctb'),
+    comment = c(ORCID = '0000-0002-7127-2789')
+    ))
 Description: Methods for cross-trial comparison using IPW,
     g-computation, EIF-based one-step estimation, and TMLE.
 License: MIT + file LICENSE

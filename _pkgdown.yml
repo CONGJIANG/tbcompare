@@ -38,3 +38,9 @@ reference:
   - tmle_direct
   - tmle_theta
   - tmle_indirect
+
+authors:
+  Cong Jiang:
+    href: https://congjiang.github.io/
+  Nima Hejazi:
+    href: https://nimahejazi.org/
