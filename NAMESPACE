@@ -2,7 +2,6 @@
 
 S3method(print,xtrial)
 S3method(summary,xtrial)
-export(compare_trials)
 export(dgp_tb_trial_data)
 export(dgp_xtrial_data)
 export(eif_direct_est)
